@@ -8,6 +8,10 @@ import {TwoComponent} from './two/two.component';
 import {ThreeComponent} from './three/three.component';
 import {FourComponent} from './four/four.component';
 import {ShortenPipe} from '../pipes/shorten.pipe';
+import {FormsModule} from '@angular/forms';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -20,9 +24,11 @@ import {ShortenPipe} from '../pipes/shorten.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase, 'angular-son')
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule {
